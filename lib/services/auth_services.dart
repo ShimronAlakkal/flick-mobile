@@ -7,7 +7,7 @@ class AuthServices {
   Future<String> signUserUpWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
-      UserCredential creds = await authInstance.createUserWithEmailAndPassword(
+      await authInstance.createUserWithEmailAndPassword(
           email: email, password: password);
     } catch (e) {
       return e.toString();
@@ -19,7 +19,7 @@ class AuthServices {
   Future<String> signUserInWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
-      UserCredential creds = await authInstance.signInWithEmailAndPassword(
+      await authInstance.signInWithEmailAndPassword(
           email: email, password: password);
     } catch (e) {
       return e.toString();
