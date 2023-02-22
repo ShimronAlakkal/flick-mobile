@@ -1,5 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flick/common/display_router.dart';
+import 'package:flick/display_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

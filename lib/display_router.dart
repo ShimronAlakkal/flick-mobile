@@ -1,4 +1,4 @@
-import 'package:flick/views/auth/sign_in_page.dart';
+import 'package:flick/views/auth/si_su_router.dart';
 import 'package:flutter/material.dart';
 
 class DisplayRouter extends StatefulWidget {
@@ -11,6 +11,6 @@ class DisplayRouter extends StatefulWidget {
 class _DisplayRouterState extends State<DisplayRouter> {
   @override
   Widget build(BuildContext context) {
-    return const SignInPage();
+    return const SISURouter();
   }
 }
