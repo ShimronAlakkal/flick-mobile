@@ -33,8 +33,9 @@ class _SignInPageState extends State<SignInPage> {
               child: CircleAvatar(
                 backgroundColor: Colors.transparent,
                 foregroundColor: Colors.transparent,
-                radius: width * 0.3,
-                child: Image.asset('assets/illustrations/connect.png'),
+                radius: width * 0.3
+                ,
+                child: Image.asset('assets/illustrations/girl.png'),
               ),
             ),
 
@@ -44,7 +45,7 @@ class _SignInPageState extends State<SignInPage> {
 
             // The small desription on what to do next
             Text(
-              "We're super excited to have you here!!\nSign up to play, enjoy, and have a wonderful time.",
+              "Welcome back. You're almost there.",
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: ColorPalette().tertiaryTextColor,
@@ -75,11 +76,11 @@ class _SignInPageState extends State<SignInPage> {
 
             // password field
             topLabelTextFieldInstance.topLabelTextField(
-              controller: emailController,
+              controller: passwordController,
               label: 'Password',
               hintText: '',
               keyboardType: TextInputType.emailAddress,
-              obscureText: false,
+              obscureText: true,
               requiredField: true,
               maxLines: 1,
               borderRadius: 23,

@@ -11,6 +11,7 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   TopLabelTextField topLabelTextFieldInstance = TopLabelTextField();
+
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -25,23 +26,19 @@ class _SignUpPageState extends State<SignUpPage> {
         padding: EdgeInsets.symmetric(horizontal: width * 0.08),
         child: ListView(
           children: [
-            SizedBox(height: height * 0.04),
+
 
             // illustration
             Center(
               child: CircleAvatar(
                 backgroundColor: Colors.transparent,
                 foregroundColor: Colors.transparent,
-                radius: width * 0.3,
-                child: Image.asset('assets/illustrations/connect.png'),
+                radius: width * 0.33,
+                child: Image.asset('assets/illustrations/bwbw.png'),
               ),
             ),
 
-            SizedBox(
-              height: height * 0.035 / 2,
-            ),
-
-            // The small desription on what to do next
+            // The small desription 
             Text(
               "We're super excited to have you here!!\nSign up to play, enjoy, and have a wonderful time.",
               textAlign: TextAlign.center,
@@ -74,10 +71,10 @@ class _SignUpPageState extends State<SignUpPage> {
 
             // password field
             topLabelTextFieldInstance.topLabelTextField(
-              controller: emailController,
+              controller: passwordController,
               label: 'Password',
-              hintText: '',
-              keyboardType: TextInputType.emailAddress,
+              hintText: 'make it strong',
+              keyboardType: TextInputType.visiblePassword,
               obscureText: false,
               requiredField: true,
               maxLines: 1,
@@ -89,7 +86,7 @@ class _SignUpPageState extends State<SignUpPage> {
               height: height * 0.06,
             ),
 
-            // sign in Button
+            // sign up Button
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   backgroundColor: ColorPalette().primaryBlack,
@@ -104,7 +101,7 @@ class _SignUpPageState extends State<SignUpPage> {
               // sign user in
               onPressed: () {},
               child: const Text(
-                'Sign In',
+                'Sign Up',
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(fontSize: 18, color: Colors.white),
               ),
@@ -114,21 +111,21 @@ class _SignUpPageState extends State<SignUpPage> {
               height: height * 0.06,
             ),
 
-            // New to flick? sign up
+            // Nother options
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  'New to Flick? ',
+                  'Wanna choose another option?',
                   style: TextStyle(
                       fontSize: 15, color: ColorPalette().tertiaryTextColor),
                 ),
                 InkWell(
-                  // Go to sign up page
+                  // Go to si_su_router
                   onTap: () {},
                   child: Text(
-                    'Sign Up',
+                    ' Click here',
                     style:
                         TextStyle(fontSize: 15, color: ColorPalette().linkBlue),
                   ),
