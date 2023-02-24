@@ -8,6 +8,6 @@
 - [ ] Implement home UI.
 
 ## Product info
-- Version Name: <Version name>
-- Version Code: <Version code>
+- Version Name: 1.0.0
+- Version Code: 1.0.0+1
 - Release Type: Debug
