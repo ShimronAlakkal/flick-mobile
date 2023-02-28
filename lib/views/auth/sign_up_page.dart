@@ -1,7 +1,13 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flick/common/tools/navigation_tool.dart';
+import 'package:flick/common/tools/string_tools.dart';
+import 'package:flick/common/widgets/custom_snackbar.dart';
 import 'package:flick/common/widgets/top_lable_text_field.dart';
 import 'package:flick/constants/color_palette.dart';
+import 'package:flick/services/auth_services.dart';
 import 'package:flick/views/auth/si_su_router.dart';
+import 'package:flick/views/home/home_page.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -19,6 +25,11 @@ class _SignUpPageState extends State<SignUpPage> {
 
   final PageNavigation _pageNavigationInstance = PageNavigation();
 
+  final StringTools _stringTools = StringTools();
+  final AuthServices _authServiceInstsance = AuthServices();
+
+  bool _isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -27,7 +38,7 @@ class _SignUpPageState extends State<SignUpPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: width * 0.08),
+        padding: EdgeInsets.symmetric(horizontal: width * 0.06),
         child: ListView(
           children: [
             // illustration
@@ -101,12 +112,44 @@ class _SignUpPageState extends State<SignUpPage> {
                   elevation: 0,
                   padding: const EdgeInsets.all(12)),
               // sign user in
-              onPressed: () {},
-              child: const Text(
-                'Sign Up',
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontSize: 18, color: Colors.white),
-              ),
+              onPressed: () async {
+                if (isValidSignInForm()) {
+                  // sign user up
+                  var res = await _authServiceInstsance
+                      .signUserUpWithEmailAndPassword(
+                          email: emailController.text.trim(),
+                          password: passwordController.text);
+
+                  if (res == '1') {
+                    setState(() {
+                      _isLoading = !_isLoading;
+                    });
+
+                    _pageNavigationInstance.moveToPage(
+                        page: const Home(),
+                        context: context,
+                        replacement: true);
+                  } else {
+                    setState(() {
+                      _isLoading = !_isLoading;
+                    });
+                    CustomSnackBar().customSnackBar(context,
+                        _stringTools.firebaseErrorHandler(res.toString()));
+                  }
+                } else {
+                  CustomSnackBar()
+                      .customSnackBar(context, 'Please edit the fields above.');
+                }
+              },
+              child: _isLoading
+                  ? const CircularProgressIndicator(
+                      color: Colors.white,
+                    )
+                  : const Text(
+                      'Sign Up',
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: 18, color: Colors.white),
+                    ),
             ),
 
             SizedBox(
@@ -143,5 +186,13 @@ class _SignUpPageState extends State<SignUpPage> {
         ),
       ),
     );
+  }
+
+  bool isValidSignInForm() {
+    if (_stringTools.isValidPassword(password: passwordController.text) &&
+        _stringTools.isValidEmail(email: emailController.text.trim())) {
+      return true;
+    }
+    return false;
   }
 }
