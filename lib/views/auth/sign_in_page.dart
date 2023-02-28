@@ -1,5 +1,7 @@
+import 'package:flick/common/tools/navigation_tool.dart';
 import 'package:flick/constants/color_palette.dart';
 import 'package:flick/common/widgets/top_lable_text_field.dart';
+import 'package:flick/views/auth/si_su_router.dart';
 import 'package:flutter/material.dart';
 
 class SignInPage extends StatefulWidget {
@@ -11,8 +13,11 @@ class SignInPage extends StatefulWidget {
 
 class _SignInPageState extends State<SignInPage> {
   TopLabelTextField topLabelTextFieldInstance = TopLabelTextField();
+
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  final PageNavigation _pageNavigationInstance = PageNavigation();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +30,6 @@ class _SignInPageState extends State<SignInPage> {
         padding: EdgeInsets.symmetric(horizontal: width * 0.08),
         child: ListView(
           children: [
-
             SizedBox(height: height * 0.04),
 
             // illustration
@@ -33,9 +37,8 @@ class _SignInPageState extends State<SignInPage> {
               child: CircleAvatar(
                 backgroundColor: Colors.transparent,
                 foregroundColor: Colors.transparent,
-                radius: width * 0.3
-                ,
-                child: Image.asset('assets/illustrations/girl.png'),
+                radius: width * 0.3,
+                child: Image.asset('assets/illustrations/connect.png'),
               ),
             ),
 
@@ -128,7 +131,12 @@ class _SignInPageState extends State<SignInPage> {
                 ),
                 InkWell(
                   // Go to sign up page
-                  onTap: () {},
+                  onTap: () {
+                    _pageNavigationInstance.moveToPage(
+                        page: const SISURouter(),
+                        context: context,
+                        replacement: true);
+                  },
                   child: Text(
                     'Sign Up',
                     style:

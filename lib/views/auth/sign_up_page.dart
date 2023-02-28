@@ -1,5 +1,7 @@
+import 'package:flick/common/tools/navigation_tool.dart';
 import 'package:flick/common/widgets/top_lable_text_field.dart';
 import 'package:flick/constants/color_palette.dart';
+import 'package:flick/views/auth/si_su_router.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -15,6 +17,8 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  final PageNavigation _pageNavigationInstance = PageNavigation();
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -26,8 +30,6 @@ class _SignUpPageState extends State<SignUpPage> {
         padding: EdgeInsets.symmetric(horizontal: width * 0.08),
         child: ListView(
           children: [
-
-
             // illustration
             Center(
               child: CircleAvatar(
@@ -38,7 +40,7 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ),
 
-            // The small desription 
+            // The small desription
             Text(
               "We're super excited to have you here!!\nSign up to play, enjoy, and have a wonderful time.",
               textAlign: TextAlign.center,
@@ -123,7 +125,12 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 InkWell(
                   // Go to si_su_router
-                  onTap: () {},
+                  onTap: () {
+                    _pageNavigationInstance.moveToPage(
+                        page: const SISURouter(),
+                        context: context,
+                        replacement: true);
+                  },
                   child: Text(
                     ' Click here',
                     style:
