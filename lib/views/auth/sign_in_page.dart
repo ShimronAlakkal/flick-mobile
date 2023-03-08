@@ -178,7 +178,7 @@ class _SignInPageState extends State<SignInPage> {
                   // Go to sign up page
                   onTap: () {
                     _pageNavigationInstance.moveToPage(
-                        page: const SISURouter(),
+                        page: const SISURouter(isLoggedIn: false,),
                         context: context,
                         replacement: true);
                   },

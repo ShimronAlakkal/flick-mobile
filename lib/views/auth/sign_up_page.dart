@@ -88,7 +88,7 @@ class _SignUpPageState extends State<SignUpPage> {
               label: 'Password',
               hintText: 'make it strong',
               keyboardType: TextInputType.visiblePassword,
-              obscureText: false,
+              obscureText: true,
               requiredField: true,
               maxLines: 1,
               borderRadius: 23,
@@ -170,7 +170,9 @@ class _SignUpPageState extends State<SignUpPage> {
                   // Go to si_su_router
                   onTap: () {
                     _pageNavigationInstance.moveToPage(
-                        page: const SISURouter(),
+                        page: const SISURouter(
+                          isLoggedIn: false,
+                        ),
                         context: context,
                         replacement: true);
                   },
