@@ -7,7 +7,7 @@ import 'package:flick/constants/color_palette.dart';
 import 'package:flick/common/widgets/top_lable_text_field.dart';
 import 'package:flick/services/auth_services.dart';
 import 'package:flick/views/auth/si_su_router.dart';
-import 'package:flick/views/home/home_page.dart';
+import 'package:flick/views/home_page.dart';
 import 'package:flutter/material.dart';
 
 class SignInPage extends StatefulWidget {

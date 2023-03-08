@@ -2,7 +2,7 @@ import 'package:flick/common/tools/navigation_tool.dart';
 import 'package:flick/constants/color_palette.dart';
 import 'package:flick/views/auth/sign_in_page.dart';
 import 'package:flick/views/auth/sign_up_page.dart';
-import 'package:flick/views/home/home_page.dart';
+import 'package:flick/views/home_page.dart';
 import 'package:flutter/material.dart';
 
 class SISURouter extends StatefulWidget {
