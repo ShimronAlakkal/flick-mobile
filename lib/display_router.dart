@@ -2,7 +2,8 @@ import 'package:flick/views/auth/si_su_router.dart';
 import 'package:flutter/material.dart';
 
 class DisplayRouter extends StatefulWidget {
-  const DisplayRouter({super.key});
+  final bool isLoggedIn;
+  const DisplayRouter({super.key, required this.isLoggedIn});
 
   @override
   State<DisplayRouter> createState() => _DisplayRouterState();
@@ -11,6 +12,8 @@ class DisplayRouter extends StatefulWidget {
 class _DisplayRouterState extends State<DisplayRouter> {
   @override
   Widget build(BuildContext context) {
-    return const SISURouter();
+    return SISURouter(
+      isLoggedIn: widget.isLoggedIn,
+    );
   }
 }
