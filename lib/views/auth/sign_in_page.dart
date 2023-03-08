@@ -6,6 +6,7 @@ import 'package:flick/common/widgets/custom_snackbar.dart';
 import 'package:flick/constants/color_palette.dart';
 import 'package:flick/common/widgets/top_lable_text_field.dart';
 import 'package:flick/services/auth_services.dart';
+import 'package:flick/services/forgot_password_service.dart';
 import 'package:flick/views/auth/si_su_router.dart';
 import 'package:flick/views/home_page.dart';
 import 'package:flutter/material.dart';
@@ -101,6 +102,30 @@ class _SignInPageState extends State<SignInPage> {
               borderColor: ColorPalette().primaryBlack,
             ),
 
+            const SizedBox(
+              height: 10,
+            ),
+
+            // The reset password prompt
+            InkWell(
+              onTap: () {
+                _stringTools.isValidEmail(email: emailController.text.trim())
+                    ? _pageNavigationInstance.moveToPage(
+                        page: ForgotPasswordPage(email: emailController.text),
+                        context: context,
+                        replacement: false)
+                    : CustomSnackBar()
+                        .customSnackBar(context, 'Please enter a valid email.');
+              },
+              child: Text(
+                'Forgot Password? ',
+                style: TextStyle(
+                    color: ColorPalette().linkBlue,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 15),
+              ),
+            ),
+
             SizedBox(
               height: height * 0.06,
             ),
@@ -178,7 +203,9 @@ class _SignInPageState extends State<SignInPage> {
                   // Go to sign up page
                   onTap: () {
                     _pageNavigationInstance.moveToPage(
-                        page: const SISURouter(isLoggedIn: false,),
+                        page: const SISURouter(
+                          isLoggedIn: false,
+                        ),
                         context: context,
                         replacement: true);
                   },
