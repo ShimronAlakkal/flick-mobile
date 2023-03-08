@@ -51,6 +51,7 @@ class TopLabelTextField {
           autofocus: false,
           controller: controller,
           decoration: InputDecoration(
+            // suffixIcon: obscureText ? const Icon(Icons.lock_outline_rounded,color: Colors.grey,) :  const Icon(Icons.lock_open_rounded,color: Colors.grey,),
             focusedBorder: borderColor != null
                 ? OutlineInputBorder(
                     borderSide: BorderSide(
